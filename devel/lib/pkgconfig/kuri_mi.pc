@@ -1,0 +1,8 @@
+prefix=/home/peggyjean/toms_ws/devel
+
+Name: kuri_mi
+Description: Description of kuri_mi
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/peggyjean/toms_ws/devel/lib 
+Requires: 

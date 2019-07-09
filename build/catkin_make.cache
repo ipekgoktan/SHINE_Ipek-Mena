@@ -1,0 +1,2 @@
+kuri_mi
+-DCATKIN_DEVEL_PREFIX=/home/peggyjean/toms_ws/devel -DCMAKE_INSTALL_PREFIX=/home/peggyjean/toms_ws/install -G Unix Makefiles
