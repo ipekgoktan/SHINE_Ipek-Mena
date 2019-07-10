@@ -1,0 +1,8 @@
+prefix=/home/peggyjean/toms_ws/install
+
+Name: mobile_base_driver
+Description: Description of mobile_base_driver
+Version: 0.0.0
+Cflags: -I/home/peggyjean/toms_ws/install/include
+Libs: -L/home/peggyjean/toms_ws/install/lib 
+Requires: 
