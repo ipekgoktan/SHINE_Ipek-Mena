@@ -11,7 +11,7 @@ from mobile_base_driver.msg import Led
 def run():
     pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
     rospy.init_node('kuri_light')
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(100)
     l = ChestLeds()
 
     print("Light Program Started")
@@ -28,6 +28,7 @@ def run():
         return ch
 
     button_delay = 0.2
+    rainbowStart = True
 
     while not rospy.is_shutdown():
         try:
@@ -60,9 +61,46 @@ def run():
 
                 time.sleep(button_delay)
 
+            if(letter == "q"):
+                for i in range(len(l.leds)):
+                    l.leds[i].red = 255
+                    l.leds[i].green = 0
+                    l.leds[i].blue = 0
+
+                while(l.leds[i].red > 0):
+                    for i in range(len(l.leds)):
+                                l.leds[i].red = l.leds[i].red - 20
+                                l.leds[i].green = l.leds[i].green + 20
+                                time.sleep(0.1)
+                                
+                                if (letter == "c"):
+                                    print("Teleop ended.")
+                                    exit(0)
+                                pub.publish(l)
+                while(l.leds[i].green > 0):
+                    for i in range(len(l.leds)):
+                                l.leds[i].green = l.leds[i].green - 20
+                                l.leds[i].blue = l.leds[i].blue + 20
+                                time.sleep(0.1)
+                                if (letter == "c"):
+                                    print("Teleop ended.")
+                                    exit(0)
+                                pub.publish(l)
+                while(l.leds[i].blue > 0):
+                    for i in range(len(l.leds)):
+                                l.leds[i].blue = l.leds[i].blue - 20
+                                l.leds[i].red = l.leds[i].red + 20
+                                time.sleep(0.1)
+                                if (letter == "c"):
+                                    print("Teleop ended.")
+                                    exit(0)
+                                pub.publish(l)
+
+
             if (letter == "c"):
                 print("Teleop ended.")
                 exit(0)
+
             
             pub.publish(l)
             rate.sleep()
