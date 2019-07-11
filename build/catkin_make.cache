@@ -1,2 +1,2 @@
-kuri_mi:mobile_base_driver
+kuri_mi:mobile_base_driver:vision_msgs
 -DCATKIN_DEVEL_PREFIX=/home/peggyjean/toms_ws/devel -DCMAKE_INSTALL_PREFIX=/home/peggyjean/toms_ws/install -G Unix Makefiles

@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   mobile_base_driver
+  vision_msgs
 )
 
 ## System dependencies are found with CMake's conventions
