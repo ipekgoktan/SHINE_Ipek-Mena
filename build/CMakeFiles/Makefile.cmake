@@ -219,6 +219,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "mobile_base_driver/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
   "mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_ChestLeds.dir/DependInfo.cmake"
   "mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Led.dir/DependInfo.cmake"
+  "mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/DependInfo.cmake"
   "mobile_base_driver/CMakeFiles/mobile_base_driver_gencpp.dir/DependInfo.cmake"
   "mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages.dir/DependInfo.cmake"
   "mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_cpp.dir/DependInfo.cmake"

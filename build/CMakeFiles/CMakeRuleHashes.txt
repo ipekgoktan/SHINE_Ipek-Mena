@@ -1,6 +1,7 @@
 # Hashes of file build rules.
 0593f13b88e5a5c9386d90fb346d008f /home/peggyjean/toms_ws/devel/include/mobile_base_driver/ChestLeds.h
 0a1152e8e93ff9a57bdc1174fa2a3311 /home/peggyjean/toms_ws/devel/include/mobile_base_driver/Led.h
+d261c7e345d9731281d156e6d8d129a7 /home/peggyjean/toms_ws/devel/include/mobile_base_driver/Touch.h
 f6361aa47e53f8ee8a32fb45c073b3ad /home/peggyjean/toms_ws/devel/include/vision_msgs/ClassifiedObject.h
 20f1d4a4f99d606a78b06faad17eed0c /home/peggyjean/toms_ws/devel/include/vision_msgs/ClassifiedObjects.h
 1083467160e5aef0c93976f8e3d761b7 /home/peggyjean/toms_ws/devel/include/vision_msgs/DetectedObjects.h
@@ -12,6 +13,7 @@ f6361aa47e53f8ee8a32fb45c073b3ad /home/peggyjean/toms_ws/devel/include/vision_ms
 16967261c300c8301bd0db5d344aaa72 /home/peggyjean/toms_ws/devel/include/vision_msgs/ObjectFeatures.h
 fd721b2cd558b9d952438a3f3990b1af /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_ChestLeds.py
 7a236999cb96500ef11c0f37f5ab92b2 /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Led.py
+af4cdb3dfe34f6584ec649bb60f09b1b /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Touch.py
 59d3583fd54c35aa19f35b419a2b527c /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/__init__.py
 a597fcfaaba046ff7fb5c0d440e81324 /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/vision_msgs/msg/_ClassifiedObject.py
 292e69c295c5091a66456335068a0a0d /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/vision_msgs/msg/_ClassifiedObjects.py
@@ -25,6 +27,7 @@ e9feccc664a387b32f445aaa75573d98 /home/peggyjean/toms_ws/devel/lib/python2.7/dis
 ae9e1294b0ac551a0330deac48a10756 /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/vision_msgs/msg/__init__.py
 4eb2c2bd91f08129eefd85bbf290e779 /home/peggyjean/toms_ws/devel/share/common-lisp/ros/mobile_base_driver/msg/ChestLeds.lisp
 caeb4fc6d98a497105d19f67405eeead /home/peggyjean/toms_ws/devel/share/common-lisp/ros/mobile_base_driver/msg/Led.lisp
+9a7ff9d492ca78cb564dc02571b020f5 /home/peggyjean/toms_ws/devel/share/common-lisp/ros/mobile_base_driver/msg/Touch.lisp
 7de3112b6086bfcf5d76b7b8e2ceb196 /home/peggyjean/toms_ws/devel/share/common-lisp/ros/vision_msgs/msg/ClassifiedObject.lisp
 c73258cb7c287af045aa8d6f8ba88b5d /home/peggyjean/toms_ws/devel/share/common-lisp/ros/vision_msgs/msg/ClassifiedObjects.lisp
 5d1016a6eb34edaea114eb9755b2eebc /home/peggyjean/toms_ws/devel/share/common-lisp/ros/vision_msgs/msg/DetectedObjects.lisp
@@ -48,6 +51,7 @@ fe16eadd56bcb06aa576fe1b8ad17058 /home/peggyjean/toms_ws/devel/share/common-lisp
 5430ff53ba70bec4539401d82a5f93ce mobile_base_driver/CMakeFiles/_catkin_empty_exported_target
 8953b735eecf2a833e6b273bcbb245ec mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_ChestLeds
 935623508588c21c22e86f272f957146 mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Led
+d804236fece43748802dc85cc3eb052c mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch
 5430ff53ba70bec4539401d82a5f93ce mobile_base_driver/CMakeFiles/mobile_base_driver_gencpp
 5430ff53ba70bec4539401d82a5f93ce mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages
 5430ff53ba70bec4539401d82a5f93ce mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_cpp

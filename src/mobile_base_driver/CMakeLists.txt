@@ -50,6 +50,7 @@ catkin_python_setup()
    FILES
    ChestLeds.msg
    Led.msg
+   Touch.msg
  )
 
 ## Generate services in the 'srv' folder

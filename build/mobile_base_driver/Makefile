@@ -192,6 +192,20 @@ _mobile_base_driver_generate_messages_check_deps_Led/fast:
 .PHONY : _mobile_base_driver_generate_messages_check_deps_Led/fast
 
 # Convenience name for target.
+mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/rule:
+	cd /home/peggyjean/toms_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/rule
+.PHONY : mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/rule
+
+# Convenience name for target.
+_mobile_base_driver_generate_messages_check_deps_Touch: mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/rule
+.PHONY : _mobile_base_driver_generate_messages_check_deps_Touch
+
+# fast build rule for target.
+_mobile_base_driver_generate_messages_check_deps_Touch/fast:
+	cd /home/peggyjean/toms_ws/build && $(MAKE) -f mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/build.make mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/build
+.PHONY : _mobile_base_driver_generate_messages_check_deps_Touch/fast
+
+# Convenience name for target.
 mobile_base_driver/CMakeFiles/mobile_base_driver_gencpp.dir/rule:
 	cd /home/peggyjean/toms_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mobile_base_driver/CMakeFiles/mobile_base_driver_gencpp.dir/rule
 .PHONY : mobile_base_driver/CMakeFiles/mobile_base_driver_gencpp.dir/rule
@@ -298,6 +312,7 @@ help:
 	@echo "... _catkin_empty_exported_target"
 	@echo "... _mobile_base_driver_generate_messages_check_deps_ChestLeds"
 	@echo "... _mobile_base_driver_generate_messages_check_deps_Led"
+	@echo "... _mobile_base_driver_generate_messages_check_deps_Touch"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"

@@ -47,6 +47,7 @@ include mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py.di
 
 mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_ChestLeds.py
 mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Led.py
+mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Touch.py
 mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/__init__.py
 
 /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_ChestLeds.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
@@ -62,16 +63,24 @@ mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py: /home/peg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG mobile_base_driver/Led"
 	cd /home/peggyjean/toms_ws/build/mobile_base_driver && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg -Imobile_base_driver:/home/peggyjean/toms_ws/src/mobile_base_driver/msg -p mobile_base_driver -o /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg
 
+/home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Touch.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
+/home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Touch.py: /home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/peggyjean/toms_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG mobile_base_driver/Touch"
+	cd /home/peggyjean/toms_ws/build/mobile_base_driver && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg -Imobile_base_driver:/home/peggyjean/toms_ws/src/mobile_base_driver/msg -p mobile_base_driver -o /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg
+
 /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/__init__.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
 /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/__init__.py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_ChestLeds.py
 /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/__init__.py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Led.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/peggyjean/toms_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
+/home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/__init__.py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Touch.py
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/peggyjean/toms_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python msg __init__.py for mobile_base_driver"
 	cd /home/peggyjean/toms_ws/build/mobile_base_driver && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg --initpy
 
 mobile_base_driver_generate_messages_py: mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py
 mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_ChestLeds.py
 mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Led.py
+mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/_Touch.py
 mobile_base_driver_generate_messages_py: /home/peggyjean/toms_ws/devel/lib/python2.7/dist-packages/mobile_base_driver/msg/__init__.py
 mobile_base_driver_generate_messages_py: mobile_base_driver/CMakeFiles/mobile_base_driver_generate_messages_py.dir/build.make
 .PHONY : mobile_base_driver_generate_messages_py

@@ -40,6 +40,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mobile_base_driver/msg" TYPE FILE FILES
     "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/ChestLeds.msg"
     "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg"
+    "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

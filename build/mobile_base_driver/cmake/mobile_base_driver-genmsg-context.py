@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/ChestLeds.msg;/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg"
+messages_str = "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/ChestLeds.msg;/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg;/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg"
 services_str = ""
 pkg_name = "mobile_base_driver"
 dependencies_str = ""

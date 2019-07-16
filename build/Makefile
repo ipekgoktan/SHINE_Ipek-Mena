@@ -280,6 +280,19 @@ _mobile_base_driver_generate_messages_check_deps_Led/fast:
 .PHONY : _mobile_base_driver_generate_messages_check_deps_Led/fast
 
 #=============================================================================
+# Target rules for targets named _mobile_base_driver_generate_messages_check_deps_Touch
+
+# Build rule for target.
+_mobile_base_driver_generate_messages_check_deps_Touch: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _mobile_base_driver_generate_messages_check_deps_Touch
+.PHONY : _mobile_base_driver_generate_messages_check_deps_Touch
+
+# fast build rule for target.
+_mobile_base_driver_generate_messages_check_deps_Touch/fast:
+	$(MAKE) -f mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/build.make mobile_base_driver/CMakeFiles/_mobile_base_driver_generate_messages_check_deps_Touch.dir/build
+.PHONY : _mobile_base_driver_generate_messages_check_deps_Touch/fast
+
+#=============================================================================
 # Target rules for targets named mobile_base_driver_gencpp
 
 # Build rule for target.
@@ -796,6 +809,7 @@ help:
 	@echo "... _catkin_empty_exported_target"
 	@echo "... _mobile_base_driver_generate_messages_check_deps_ChestLeds"
 	@echo "... _mobile_base_driver_generate_messages_check_deps_Led"
+	@echo "... _mobile_base_driver_generate_messages_check_deps_Touch"
 	@echo "... mobile_base_driver_gencpp"
 	@echo "... mobile_base_driver_generate_messages"
 	@echo "... mobile_base_driver_generate_messages_cpp"

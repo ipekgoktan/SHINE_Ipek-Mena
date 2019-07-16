@@ -6,6 +6,7 @@ import termios, tty, os, time, sys, math
 from std_msgs.msg import String
 from mobile_base_driver.msg import ChestLeds
 from mobile_base_driver.msg import Led
+from mobile_base_driver.msg import Touch
 #from geometry_msgs.msg import HeadClient
 #For face detection
 from vision_msgs.msg import FrameResults
@@ -20,6 +21,7 @@ from vision_msgs.msg import ImageQuality
 from vision_msgs.msg import ObjectFeatures
 #For body movement
 from geometry_msgs.msg import Twist
+
 
 def light_up(frequency1, frequency2, frequency3, phase1, phase2, phase3):
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)

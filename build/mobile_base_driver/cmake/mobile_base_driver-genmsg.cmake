@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "mobile_base_driver: 2 messages, 0 services")
+message(STATUS "mobile_base_driver: 3 messages, 0 services")
 
 set(MSG_I_FLAGS "-Imobile_base_driver:/home/peggyjean/toms_ws/src/mobile_base_driver/msg")
 
@@ -25,6 +25,11 @@ add_custom_target(_mobile_base_driver_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "mobile_base_driver" "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg" ""
 )
 
+get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg" NAME_WE)
+add_custom_target(_mobile_base_driver_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "mobile_base_driver" "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg" ""
+)
+
 #
 #  langs = gencpp;genlisp;genpy
 #
@@ -39,6 +44,12 @@ _generate_msg_cpp(mobile_base_driver
 )
 _generate_msg_cpp(mobile_base_driver
   "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/mobile_base_driver
+)
+_generate_msg_cpp(mobile_base_driver
+  "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/mobile_base_driver
@@ -62,6 +73,8 @@ get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver
 add_dependencies(mobile_base_driver_generate_messages_cpp _mobile_base_driver_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg" NAME_WE)
 add_dependencies(mobile_base_driver_generate_messages_cpp _mobile_base_driver_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg" NAME_WE)
+add_dependencies(mobile_base_driver_generate_messages_cpp _mobile_base_driver_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(mobile_base_driver_gencpp)
@@ -80,6 +93,12 @@ _generate_msg_lisp(mobile_base_driver
 )
 _generate_msg_lisp(mobile_base_driver
   "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/mobile_base_driver
+)
+_generate_msg_lisp(mobile_base_driver
+  "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/mobile_base_driver
@@ -103,6 +122,8 @@ get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver
 add_dependencies(mobile_base_driver_generate_messages_lisp _mobile_base_driver_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg" NAME_WE)
 add_dependencies(mobile_base_driver_generate_messages_lisp _mobile_base_driver_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg" NAME_WE)
+add_dependencies(mobile_base_driver_generate_messages_lisp _mobile_base_driver_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(mobile_base_driver_genlisp)
@@ -125,6 +146,12 @@ _generate_msg_py(mobile_base_driver
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/mobile_base_driver
 )
+_generate_msg_py(mobile_base_driver
+  "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/mobile_base_driver
+)
 
 ### Generating Services
 
@@ -143,6 +170,8 @@ add_dependencies(mobile_base_driver_generate_messages mobile_base_driver_generat
 get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/ChestLeds.msg" NAME_WE)
 add_dependencies(mobile_base_driver_generate_messages_py _mobile_base_driver_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Led.msg" NAME_WE)
+add_dependencies(mobile_base_driver_generate_messages_py _mobile_base_driver_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/peggyjean/toms_ws/src/mobile_base_driver/msg/Touch.msg" NAME_WE)
 add_dependencies(mobile_base_driver_generate_messages_py _mobile_base_driver_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
