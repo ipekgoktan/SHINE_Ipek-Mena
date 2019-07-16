@@ -22,6 +22,9 @@ from vision_msgs.msg import ObjectFeatures
 #For body movement
 from geometry_msgs.msg import Twist
 from mobile_base_driver.msg import Touch
+#For playing sounds
+import os
+import subprocess
 
 #Head pan, tilt and eye movements are all within Head Client object
 
@@ -63,14 +66,14 @@ def rainbow(frequency1, frequency2, frequency3, phase1, phase2, phase3):
 			pub.publish(l)
 		time.sleep(0.1)
 
-def chase_user():
+def chase_user(): #moves forwards until face is at certain size limit
 	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
 	m = Twist()
 	m.angular.z = 0
 	m.linear.x = 0.7
 	pub.publish(m)
 
-def turn_x(x):
+def turn_x(x): #turns towards user to center face
 	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
 	m = Twist()
 	print("turning started")
@@ -81,17 +84,13 @@ def turn_x(x):
 	elif x > 0.6:
 		m.linear.x = 0
 		m.angular.z = -0.2
-
 	pub.publish(m)
-
 	if(x > 0.4 and x < 0.6):
 		chase_user()
 		print("user is centered")
 		return(True)
 	
-	
-
-def getch():
+def getch(): #real time key input
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
         try:
@@ -101,12 +100,6 @@ def getch():
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
-
-def check():
-	letter = getch()
-	if (letter == "c"):
-		print("Teleop ended.")
-		exit(0)
 
 def touch_cb(msg):
 	if msg:
@@ -118,15 +111,12 @@ def touch_cb(msg):
 			else:
 				white()
 
-
 def face_cb(msg): #face sensor callback
 	helo = "potato"
 	if msg.faces.faces:
 		#print(msg.faces.faces[0].size)
 		print("I see a face!")
 		turn_x(msg.faces.faces[0].center.x)
-		#if(msg.faces.faces[0].size < 0.4):
-			#chase_user()
 		#rainbow(.3, .3, .3, 0, 2, 4)
 		hello = "hi"
 	 	
