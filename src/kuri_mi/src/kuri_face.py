@@ -23,6 +23,8 @@ from vision_msgs.msg import ObjectFeatures
 from geometry_msgs.msg import Twist
 from mobile_base_driver.msg import Touch
 
+#Head pan, tilt and eye movements are all within Head Client object
+
 face_detected = False
 touch_detected = False
 
@@ -46,8 +48,6 @@ def white():
 
 def rainbow(frequency1, frequency2, frequency3, phase1, phase2, phase3):
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
-	#rospy.init_node('kuri_face')
-	#rate = rospy.Rate(100)
 	l = ChestLeds()
 
 	print("kuri rainbow working")
@@ -63,9 +63,12 @@ def rainbow(frequency1, frequency2, frequency3, phase1, phase2, phase3):
 			pub.publish(l)
 		time.sleep(0.1)
 
-def lights():
-	white()
-
+def chase_user():
+	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
+	m = Twist()
+	m.angular.z = 0
+	m.linear.x = 0.7
+	pub.publish(m)
 
 def turn_x(x):
 	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
@@ -74,13 +77,19 @@ def turn_x(x):
 
 	if x < 0.4:
 		m.linear.x = 0
-		m.angular.z = 0.5
+		m.angular.z = 0.2
 	elif x > 0.6:
 		m.linear.x = 0
-		m.angular.z = -0.5
+		m.angular.z = -0.2
 
-	
 	pub.publish(m)
+
+	if(x > 0.4 and x < 0.6):
+		chase_user()
+		print("user is centered")
+		return(True)
+	
+	
 
 def getch():
         fd = sys.stdin.fileno()
@@ -104,31 +113,24 @@ def touch_cb(msg):
 		#print(msg)
 		for i in range(len(msg.electrodes)):
 			if(msg.electrodes[i]):
-				print("I am being touched")
+				#print("I am being touched")
 				happy()
 			else:
 				white()
 
 
 def face_cb(msg): #face sensor callback
-	#if msg:
-	
-
 	helo = "potato"
 	if msg.faces.faces:
-		#print(msg.faces.faces[0].center)
+		#print(msg.faces.faces[0].size)
 		print("I see a face!")
 		turn_x(msg.faces.faces[0].center.x)
+		#if(msg.faces.faces[0].size < 0.4):
+			#chase_user()
 		#rainbow(.3, .3, .3, 0, 2, 4)
 		hello = "hi"
 	 	
-	# 	#print(faces)
-	# 	print(frame)
-	# 	pass
 def run():
-	#vc = VisionClient()
-	#vc.activate_module(module_name=VisionClient.FACE_DETECTOR)
-	#fr = FrameResults()
 	node = rospy.init_node('potato')
 
 	vs = rospy.Subscriber(#subscriber for vision sensor
@@ -147,20 +149,6 @@ def run():
 	print("face detection program")
 	print(FrameResults)
 	rospy.spin()
-	 # while not rospy.is_shutdown():
-		# try:
-
-		# 	#face_cb()
-		# 	#print("_____")
-		# 	#ospy.spin()
-
-		# 	#check()
-		# 	#ccccccrospy.spin()
-		# 	time.sleep(1)
-		# 	rate.sleep()
-			
-		# except:
-		# 	pass
 
 if __name__ == '__main__':
 	print("Kuri face detection started")
