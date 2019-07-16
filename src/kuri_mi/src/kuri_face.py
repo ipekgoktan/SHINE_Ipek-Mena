@@ -59,10 +59,13 @@ def check():
 
 def face_cb(msg):
 	#if msg:
-	light_up(.3, .3, .3, 0, 2, 4)
+	
 	helo = "potato"
-	# if msg:
-	# 	print("I see a face!")
+	if msg.faces.faces:
+		print(msg.faces.faces)
+		print("I see a face!")
+		light_up(.3, .3, .3, 0, 2, 4)
+	 	
 	# 	#print(faces)
 	# 	print(frame)
 	# 	pass
@@ -76,6 +79,8 @@ def run():
 		FrameResults,
 		face_cb
 	)
+	print("face detection program")
+	print(FrameResults)
 	rospy.spin()
 	 # while not rospy.is_shutdown():
 		# try:
@@ -93,4 +98,5 @@ def run():
 		# 	pass
 
 if __name__ == '__main__':
+	print("Kuri face detection started")
 	run()
