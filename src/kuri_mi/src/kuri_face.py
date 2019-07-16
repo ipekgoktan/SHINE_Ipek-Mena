@@ -30,9 +30,9 @@ def happy():
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
 	l = ChestLeds()
 	for i in range(len(l.leds)):
-		l.leds[i].red = 200
-		l.leds[i].green = 50
-		l.leds[i].blue = 0
+		l.leds[i].red = 255
+		l.leds[i].green = 20
+		l.leds[i].blue = 147
 	pub.publish(l)
 
 def white():
