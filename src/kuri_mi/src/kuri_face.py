@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 import rospy
-#import mayfield_msgs.msg
 
 #For lighting the chest LEDs
 import termios, tty, os, time, sys, math
 from std_msgs.msg import String
 from mobile_base_driver.msg import ChestLeds
 from mobile_base_driver.msg import Led
-
+#from geometry_msgs.msg import HeadClient
+#For face detection
 from vision_msgs.msg import FrameResults
 from vision_msgs.msg import Face
 from vision_msgs.msg import FaceArray
@@ -18,8 +18,8 @@ from vision_msgs.msg import ClassifiedObjects
 from vision_msgs.msg import ClassifiedObject
 from vision_msgs.msg import ImageQuality
 from vision_msgs.msg import ObjectFeatures
-#from vision_msgs.msg import VisionCmdMsg
-
+#For body movement
+from geometry_msgs.msg import Twist
 
 def light_up(frequency1, frequency2, frequency3, phase1, phase2, phase3):
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
@@ -39,6 +39,21 @@ def light_up(frequency1, frequency2, frequency3, phase1, phase2, phase3):
 			l.leds[p].blue = math.sin(frequency3*i + phase3) * width + center;
 			pub.publish(l)
 		time.sleep(0.1)
+
+def turn_x(x):
+	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
+	m = Twist()
+	print("turning started")
+
+	if x < 0.4:
+		m.linear.x = 0
+		m.angular.z = 0.5
+	elif x > 0.6:
+		m.linear.x = 0
+		m.angular.z = -0.5
+
+	
+	pub.publish(m)
 
 def getch():
         fd = sys.stdin.fileno()
@@ -62,9 +77,10 @@ def face_cb(msg):
 	
 	helo = "potato"
 	if msg.faces.faces:
-		print(msg.faces.faces)
+		print(msg.faces.faces[0].center)
 		print("I see a face!")
-		light_up(.3, .3, .3, 0, 2, 4)
+		turn_x(msg.faces.faces[0].center.x)
+		#light_up(.3, .3, .3, 0, 2, 4)
 	 	
 	# 	#print(faces)
 	# 	print(frame)
