@@ -28,8 +28,7 @@ import subprocess
 
 #Head pan, tilt and eye movements are all within Head Client object
 
-face_detected = False
-touch_detected = False
+SOUNDS_LOC = "Downlads/blip.wav" #add .wav file to location
 
 def happy():
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
@@ -65,6 +64,20 @@ def rainbow(frequency1, frequency2, frequency3, phase1, phase2, phase3):
 			l.leds[p].blue = math.sin(frequency3*i + phase3) * width + center;
 			pub.publish(l)
 		time.sleep(0.1)
+
+def pub_sound(can_speak):
+	pub = rospy.Publisher('speak', String, queue_size=10)
+	if(can_speak):
+		pub.publish("Yes")
+		print("pub yes")
+	else:
+		pub.publish("No")
+	time.sleep(0.1)
+
+def play_sound():
+	command = ['mplayer', '-slave', '-quiet', '-novideo', '-ao', 'alsa', SOUNDS_LOC]
+	with open(os.devnull, 'w') as DEVNULL:
+		process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=DEVNULL, stderr=subprocess.PIPE, preexec_fn=os.setsid)
 
 def chase_user(): #moves forwards until face is at certain size limit
 	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
@@ -108,8 +121,10 @@ def touch_cb(msg):
 			if(msg.electrodes[i]):
 				#print("I am being touched")
 				happy()
+				pub_sound(True)
 			else:
 				white()
+				#ub_sound(False)
 
 def face_cb(msg): #face sensor callback
 	helo = "potato"
