@@ -35,6 +35,7 @@ import threading
 rainbowShouldBeRunning = False
 SOUNDS_LOC = "Downlads/blip.wav" #add .wav file to location
 get_pet = False
+shouldChase = False
 
 def happy():
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
@@ -153,36 +154,22 @@ def touch_cb(msg):
 
 
 def face_cb(msg): #face sensor callback
-	helo = "potato"
+	global shouldChase
 	if msg.faces.faces:
 		#print(msg.faces.faces[0].size)
-		print("I see a face!")
-		turn_x(msg.faces.faces[0].center.x)
-		#rainbow(.3, .3, .3, 0, 2, 4)
-		hello = "hi"
+		if shouldChase:
+			print("I see a face!")
+			turn_x(msg.faces.faces[0].center.x)
+			#rainbow(.3, .3, .3, 0, 2, 4)
 
 def demo():
 	node = rospy.init_node('potato')
-
+	setup()
 
 	while not rospy.is_shutdown():
 		try:
 			letter = getch()
-			if (letter == "a"):
-				print("Approach code started!")
-				#while(letter != "c"):	
-				vs = rospy.Subscriber(#subscriber for vision sensor
-					"vision/results",
-					FrameResults,
-					face_cb
-				)
-			if (letter == "t"):
-				print("touch code started!")
-				ts = rospy.Subscriber(#subscriber for touch sensors
-					"/mobile_base/touch", 
-					Touch, 
-					touch_cb
-				)
+
 
 			if(letter == "q"):
 				global rainbowShouldBeRunning
@@ -204,23 +191,41 @@ def demo():
 			if(letter == "o"):
 				global get_pet
 				get_pet = not get_pet
-
+			if (letter == "c"):
+				print("exiting program")
+				exit(0)
+			if(letter == "a"):
+				global shouldChase
+				shouldChase= not shouldChase
 
 		except:
 			pass
 	rospy.spin()
 
-
-
-def run():
-	node = rospy.init_node('potato')
-
+def setup():
+	print("subscribed to face detection")
 	vs = rospy.Subscriber(#subscriber for vision sensor
 		"vision/results",
 		FrameResults,
 		face_cb
 	)
 
+	print("subscribed to touch sensors")
+	ts = rospy.Subscriber(#subscriber for touch sensors
+		"/mobile_base/touch", 
+		Touch, 
+		touch_cb
+	)
+
+
+
+def run():
+	node = rospy.init_node('potato')
+	vs = rospy.Subscriber(#subscriber for vision sensor
+		"vision/results",
+		FrameResults,
+		face_cb
+	)
 
 	ts = rospy.Subscriber(#subscriber for touch sensors
 		"/mobile_base/touch", 
