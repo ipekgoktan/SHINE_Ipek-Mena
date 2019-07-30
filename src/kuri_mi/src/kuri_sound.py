@@ -36,7 +36,6 @@ rainbowShouldBeRunning = False
 SOUNDS_LOC = "Downlads/blip.wav" #add .wav file to location
 get_pet = False
 shouldChase = False
-canTurn = False
 
 def happy():
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
@@ -93,7 +92,6 @@ def pub_sound(can_speak):
 		print("pub yes")
 	else:
 		pub.publish("No")
-	time.sleep(0.1)
 
 def play_sound():
 	command = ['mplayer', '-slave', '-quiet', '-novideo', '-ao', 'alsa', SOUNDS_LOC]
@@ -123,24 +121,7 @@ def turn_x(x): #turns towards user to center face
 		chase_user()
 		print("user is centered")
 		return(True)
-
-def chilling(msg):
-	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
-	m = Twist()
-	x = msg.faces.faces[0].center.x
-	global canTurn
-
-	if msg.faces.faces:
-		if canTurn:
-			print("Hello there!")
-			if x < 0.4:
-				m.linear.x = 0
-				m.angular.z = 0.2
-			elif x > 0.6:
-				m.linear.x = 0
-				m.angular.z = -0.2
-			pub.publish(m)
-
+	
 def getch(): #real time key input
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
@@ -153,6 +134,7 @@ def getch(): #real time key input
         return ch
 
 def touch_cb(msg):
+	ps = True
 	global get_pet
 	if msg:
 		if get_pet:
@@ -160,16 +142,28 @@ def touch_cb(msg):
 			for i in range(len(msg.electrodes)):
 				if(msg.electrodes[i]):
 					happy()
-					pub_sound(True)
+					ps = True
 				else:
 					white()
+					ps = False
+	pub_sound(ps)
+
+			#get_pet = False	
+				#ub_sound(False)
+		#letter = getch()
+		#if(letter == "c"):
+		#	print("killing touch")
+		#	exit(0)
+
 
 def face_cb(msg): #face sensor callback
 	global shouldChase
 	if msg.faces.faces:
+		#print(msg.faces.faces[0].size)
 		if shouldChase:
 			print("I see a face!")
 			turn_x(msg.faces.faces[0].center.x)
+			#rainbow(.3, .3, .3, 0, 2, 4)
 
 def demo():
 	node = rospy.init_node('potato')
@@ -178,6 +172,7 @@ def demo():
 	while not rospy.is_shutdown():
 		try:
 			letter = getch()
+
 
 			if(letter == "q"):
 				global rainbowShouldBeRunning
@@ -204,10 +199,7 @@ def demo():
 				exit(0)
 			if(letter == "a"):
 				global shouldChase
-				shouldChase = not shouldChase
-			if(letter == "t"):
-				global canTurn
-				canTurn = not canTurn
+				shouldChase= not shouldChase
 
 		except:
 			pass
@@ -221,18 +213,32 @@ def setup():
 		face_cb
 	)
 
-	vsub = rospy.Subscriber(#subscriber for vision sensor
-		"vision/results",
-		FrameResults,
-		chilling
-	)
-
 	print("subscribed to touch sensors")
 	ts = rospy.Subscriber(#subscriber for touch sensors
 		"/mobile_base/touch", 
 		Touch, 
 		touch_cb
 	)
+
+
+
+def run():
+	node = rospy.init_node('potato')
+	vs = rospy.Subscriber(#subscriber for vision sensor
+		"vision/results",
+		FrameResults,
+		face_cb
+	)
+
+	ts = rospy.Subscriber(#subscriber for touch sensors
+		"/mobile_base/touch", 
+		Touch, 
+		touch_cb
+	)
+
+	print("face detection program")
+	print(FrameResults)
+	rospy.spin()
 
 if __name__ == '__main__':
 	print("Kuri face detection started")
