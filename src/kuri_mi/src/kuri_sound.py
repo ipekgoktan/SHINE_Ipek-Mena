@@ -36,6 +36,7 @@ rainbowShouldBeRunning = False
 SOUNDS_LOC = "Downlads/blip.wav" #add .wav file to location
 get_pet = False
 shouldChase = False
+canTurn = False
 
 def happy():
 	pub = rospy.Publisher('/mobile_base/commands/chest_leds', ChestLeds, queue_size = 10)
@@ -121,7 +122,23 @@ def turn_x(x): #turns towards user to center face
 		chase_user()
 		print("user is centered")
 		return(True)
-	
+
+def chilling(msg):
+	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
+		m = Twist()
+		x = msg.faces.faces[0].center.x
+		global canTurn
+		if msg.faces.faces:
+			if canTurn:
+				print("Hello there!")
+				if x < 0.4:
+					m.linear.x = 0
+					m.angular.z = 0.2
+				elif x > 0.6:
+					m.linear.x = 0
+					m.angular.z = -0.2
+				pub.publish(m)
+
 def getch(): #real time key input
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
