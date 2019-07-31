@@ -125,19 +125,21 @@ def turn_x(x): #turns towards user to center face
 
 def chilling(msg):
 	pub = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size = 10)
-		m = Twist()
+	m = Twist()
+	
+	global canTurn
+	if msg.faces.faces:
 		x = msg.faces.faces[0].center.x
-		global canTurn
-		if msg.faces.faces:
-			if canTurn:
-				print("Hello there!")
-				if x < 0.4:
-					m.linear.x = 0
-					m.angular.z = 0.2
-				elif x > 0.6:
-					m.linear.x = 0
-					m.angular.z = -0.2
-				pub.publish(m)
+		print(":()")
+		if canTurn:
+			print("Hello there!")
+			if x < 0.4:
+				m.linear.x = 0
+				m.angular.z = 0.2
+			elif x > 0.6:
+				m.linear.x = 0
+				m.angular.z = -0.2
+			pub.publish(m)
 
 def getch(): #real time key input
         fd = sys.stdin.fileno()
@@ -217,6 +219,10 @@ def demo():
 			if(letter == "a"):
 				global shouldChase
 				shouldChase= not shouldChase
+			if(letter == "t"):
+				global canTurn
+				canTurn = not canTurn
+				chilling()
 
 		except:
 			pass
@@ -237,25 +243,11 @@ def setup():
 		touch_cb
 	)
 
-
-
-def run():
-	node = rospy.init_node('potato')
-	vs = rospy.Subscriber(#subscriber for vision sensor
+	fs = rospy.Subscriber(#subscriber for vision sensor
 		"vision/results",
 		FrameResults,
-		face_cb
+		chilling
 	)
-
-	ts = rospy.Subscriber(#subscriber for touch sensors
-		"/mobile_base/touch", 
-		Touch, 
-		touch_cb
-	)
-
-	print("face detection program")
-	print(FrameResults)
-	rospy.spin()
 
 if __name__ == '__main__':
 	print("Kuri face detection started")
