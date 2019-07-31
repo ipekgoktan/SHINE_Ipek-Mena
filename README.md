@@ -1,5 +1,8 @@
-# SHINE_Ipek-Mena
+# SHINE_Ipek-Mena (Interaction Lab)
 ## by: Ipek Goktan and Mena Hassan
+
+### General:
+* When working with Gerald, remember to source catkin_ws before launching kuri_edu
 
 ### Audio:
 * When specifying the location of your sound file on Kuri, instead of calling your location variable sounds/filename.wav, you must provide the full path of your sound file on Kuri. 
