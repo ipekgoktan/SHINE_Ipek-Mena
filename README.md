@@ -9,3 +9,20 @@
 * In order to avoid Kuri beeping continuously while you call the function to play the sound (as opposed to playing just once), add an if-else statement that only plays a sound when the publisher switches from False to True (instead of only working when it is True)
 * Kuri's sound files can be found at: /opt/gizmo/share/assets/sounds/
 * When pulling data from a publisher that is a String msg, access and compare the String by using msg.data (instead of just msg)
+
+### Life Hacks by Ipek & Mena:)
+#### Things we learned from our mistakes
+* Run and write your code locally, not on Kuri
+* Source EVERYTHING
+* Always check your chmod and cmake
+* Import all necessary nodes
+* Additionally declare gobal variables within Python functions
+* Use online resources, kuri documentation, and ROS documentation whenever possible
+* Make sure everything is plugged in
+* Use multithreading when functions may be interfering with each other
+* Don't create everything within the same Python file
+* Import everything in vision_msgs.msg when using face detection
+* If you are getting strange errors, check your CMakeLists.txt and package.xml files
+* git push and pull everything!
+* When in doubt, print(":)") it out
+* If nothing here works, turn Kuri off and on again
