@@ -2,36 +2,36 @@
 import rospy
 
 #For lighting the chest LEDs
-import termios, tty, os, time, sys, math, subprocess
+import termios, tty, os, time, sys, math
+import subprocess
 from std_msgs.msg import String
 
-SOUNDS_LOC = "opt/gizmo/share/assets/sounds/Beep1.wav"
+SOUNDS_LOC = "/opt/gizmo/share/assets/sounds/"
+tune = "Beep4.wav"
 
-def play_sound(msg):
-        command = ['mplayer', '-slave', '-quiet', '-novideo', '-ao', 'alsa', SOUNDS_LOC]
-        with open(os.devnull, 'w') as DEVNULL:
-                process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=DEVNULL, stderr=subprocess.PIPE, preexec_fn=os.setsid)
-        print(":)")
-        return None
+a = "No"
+b = "No"
+num = 0
+yes = True
+count = 0
 
-def run():
-        node = rospy.init_node('potato_sub')
-
-        vs = rospy.Subscriber(#subscriber for vision sensor
-                "speak",
-                String,
-                play_sound
-        )
-
-
-        print("Listening to sound :)")
-        rospy.spin()
-
-if __name__ == '__main__':
-        print("Kuri face detection started")
-        run()
-~                                                                                                                 
-~                                                                                                                 
-~                                                                                                                 
-~                                                                                                                 
-~                               
+def can_play(msg):
+        global yes
+        global num
+        global count
+        print(count)
+        print(msg)
+        if(yes):
+                play_now()
+                yes = False
+        else:
+                print(count)
+                #if(msg == "Yes"):
+                count = count + 1
+                print("count changed yay")
+                if(msg.data == "Yes"):
+                        print(">_>")
+                if(count > 40):
+                        yes = True
+                        print(":)))))")
+                        count = 0      
