@@ -3,6 +3,16 @@
 
 ### General:
 * When working with Gerald, remember to source catkin_ws before launching kuri_edu
+* Our main "demo code" is kuri_sound.py
+
+### Guide to kuri_sound demo code:
+* q- turn on rainbow
+* p- turn off rainbow
+* r, g, b- red, green blue chest colors
+* o- toggle for touch (turns pink and makes sound when touched)
+* t- toggle for turn (turns to people when it sees their face)
+* a- toggle for chase (turns to people and approaches them when it sees their face)
+* c- exit program
 
 ### Audio:
 * When specifying the location of your sound file on Kuri, instead of calling your location variable sounds/filename.wav, you must provide the full path of your sound file on Kuri. 
