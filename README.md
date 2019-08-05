@@ -4,8 +4,9 @@
 ### General:
 * When working with Gerald, remember to source catkin_ws before launching kuri_edu
 * Our main "demo code" is kuri_sound.py
+* The code to control Kuri using arrow keys is kuri_move.py
 
-### Guide to kuri_sound demo code:
+### Guide to kuri_sound demo code (press these keys while the code is running):
 * q- turn on rainbow
 * p- turn off rainbow
 * r, g, b- red, green blue chest colors
